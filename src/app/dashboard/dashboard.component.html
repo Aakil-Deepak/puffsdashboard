@@ -1,0 +1,76 @@
+<div class="container no-margin-left">
+  <div class="row filter_row">
+    <div class="col-12 filter_label">Filter options:</div>
+    <div class="col-md-6 col-lg-3">
+      <span class="label label-default">From date:</span>
+        <app-datepicker-popup
+            (dateEventEmitter)="getDateEvent($event, 'fromDate')"
+            [model]="fromDate"
+            ngDefaultControl>
+        </app-datepicker-popup><br/>
+        <span class="label label-default">From time:</span>
+        <app-timepicker [model]="fromTime" (onValueChanged)="getTimeEvent($event, 'fromTime')"></app-timepicker>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <span class="label label-default">To date:</span>
+        <app-datepicker-popup
+            (dateEventEmitter)="getDateEvent($event, 'toDate')"
+            [model]="toDate"
+            ngDefaultControl>
+        </app-datepicker-popup><br/>
+        <span class="label label-default">To time:</span>
+        <app-timepicker [model]="toTime" (onValueChanged)="getTimeEvent($event, 'toTime')"></app-timepicker>     
+    </div>
+  </div>
+  <div class="row info_row">
+    <div class="col-md-4 col-lg-3 select_app">
+      <span class="label label-default">Information:</span>
+      <app-dropdown
+        [items]="sortInformation"
+        (onSelected)="setInformation($event)"
+        ngDefaultControl
+      ></app-dropdown>
+    </div>
+
+    <div class="col-md-4 col-lg-3 radio_button">
+      <span class="label label-default">Origin:</span>
+      <div class="radio_div">
+        <input type="radio" value="0" id="origin" [(ngModel)]="gameOrigin" />
+        Web
+        <span class="radio_space"> </span>
+        <input type="radio" value="1" id="origin" [(ngModel)]="gameOrigin" />
+        App
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3 select_app">
+      <span class="label label-default">Location:</span>
+      <app-dropdown
+        [items]="sortLocation"
+        (onSelected)="setLocation($event)"
+      ></app-dropdown>
+    </div>
+  </div>
+</div>
+
+<div class="container no-margin-left">
+  <div class="row">
+    <div class="col-12">
+      <button type="button " class="btn btn-primary" (click)="generateChart()">
+        Generate</button
+      >&nbsp;
+      <button type="button" class="btn btn-primary" [disabled]="isValid === false" (click)="exportToCSV()">Download</button>
+    </div>
+  </div>
+</div>
+
+<div class="row"></div>
+
+<div class="container no-margin-left">
+  <div class="row">
+    <div class="chart-container">
+      <app-chart *ngIf="dashboardData" [chartData]="dashboardData"></app-chart>
+    </div>
+  </div>
+</div>

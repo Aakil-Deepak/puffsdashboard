@@ -1,0 +1,22 @@
+.date-btn{
+    border-radius: 5px;
+}
+.leaderboard-btn{
+    border-radius: 5px;
+}
+.download-btn {
+    float: right;
+}
+
+.no-margin-left {
+    margin-left: 0px;
+}
+
+.mt-10 {
+    margin-top: 20px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: row;
+}

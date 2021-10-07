@@ -1,0 +1,51 @@
+
+<div class="container" style="margin-left:0px; margin-right:0px;">
+  <div class="row filter_row search">
+    <div class="col-10 filter_label">
+      <input type="text" [(ngModel)]="searchBy" placeholder="Search by email" style="width: 100%" (keyup.enter)="searchUsers()"/>
+    </div>
+    <div class="col-2 filter_label">
+      <button type="button" class="btn btn-primary" (click)="searchUsers()" >Search</button>&nbsp;
+      <button type="button" [disabled]="(totalResults$ | async) <= 0" class="btn btn-primary" (click)="exportToCSV()">Download</button>
+    </div>    
+  </div>
+  <div class="row" *ngIf="userEmailsData$ | async as userEmailsData">
+    <table class="col table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">AgeGate</th>
+          <th scope="col">Email</th>
+          <th scope="col">Type</th>
+          <th scope="col">City</th>
+          <th scope="col">State</th>
+          <th scope="col">Registered On</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let player of userEmailsData.users">
+          <td>{{ player.name }}</td>
+          <td>{{ player.age_gate }}</td>
+          <td>{{ player.email }}</td>
+          <td>{{ player.access_mode }}</td>
+          <td>{{ player.city }}</td>
+          <td>{{ player.state }}</td>
+          <td>{{ player.registration_time * 1000 | date:'dd/MM/yyyy' }}</td>
+        </tr>
+        </tbody>
+      </table>   
+      
+      <div class="d-flex justify-content-center p-2">
+        <ngb-pagination 
+          [collectionSize]="totalResults$ | async" 
+          [(page)]="currentPage" 
+          [pageSize]="pageSize$ | async" 
+          [boundaryLinks]="true"
+          [rotate]="true"
+          [maxSize]="5"
+          (pageChange)="onPageChange(currentPage)"
+          class="d-flex justify-content-center">
+        </ngb-pagination>
+      </div>
+    </div>    
+</div>

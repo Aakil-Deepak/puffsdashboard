@@ -1,0 +1,44 @@
+<div>
+  <app-header></app-header>
+  <div class="container-fluid">
+      <div class="row">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+              <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" 
+                      [routerLink]="['/board']" 
+                      routerLinkActive="active"
+                      [routerLinkActiveOptions]="{exact: true}">
+                      <span data-feather="dashbaord"></span>
+                      Dashboard
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" 
+                      [routerLink]="['/board/useremail']" 
+                      routerLinkActive="active">
+                      <span data-feather="email"></span>
+                      User and E-mails
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" 
+                      [routerLink]="['/board/leader']" 
+                      routerLinkActive="active">
+                      <span data-feather="leaderboard"></span>
+                      Leaderboard
+                    </a>
+                  </li>
+                </ul>
+              </div>
+          </nav>  
+            
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="pt-3 pb-2 mb-3 border-bottom">
+                  <router-outlet></router-outlet>                
+                </div>            
+          </main>          
+      </div>
+  </div>
+</div>

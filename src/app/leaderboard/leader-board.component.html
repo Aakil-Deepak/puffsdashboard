@@ -1,0 +1,78 @@
+<div class="container no-margin-left" style="padding-top:20px;">
+  <div class="row filter_row">
+    <div class="col-12 filter_label">Filter options:</div>
+    <div class="col-md-4 col-lg-3">
+        <span class="label label-default">From:</span>
+        <app-datepicker-popup (dateEventEmitter)="getDateEvent($event, 'from')" [model]="fromDate" ngDefaultControl></app-datepicker-popup><br/>
+        <span class="label label-default">From time:</span>
+        <app-timepicker [model]="fromTime" (onValueChanged)="getTimeEvent($event, 'fromTime')"></app-timepicker>        
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <span class="label label-default">To:</span>
+        <app-datepicker-popup (dateEventEmitter)="getDateEvent($event, 'to')" [model]="toDate" ngDefaultControl></app-datepicker-popup><br/>
+        <span class="label label-default">To time:</span>
+        <app-timepicker [model]="toTime" (onValueChanged)="getTimeEvent($event, 'toTime')"></app-timepicker>             
+    </div>   
+    <div class="col-1">
+      <div class="row"><button class="date-btn" type="button" (click)="getLastWeek()">Last Week</button></div>
+      <div class="row"><button class="date-btn" type="button" (click)="getLastDay()">Last Day</button></div>
+      <div class="row"><button class="date-btn" type="button" (click)="getLastMonth()">Last Month</button></div>
+  </div>     
+  </div>
+  <div class="row info_row" style="margin-top:10px;">
+     <div class="col-3 select_app">
+        <span class="label label-default">Location:</span>
+         <app-dropdown [items]="sortLocation" (onSelected)="setLocation($event)"></app-dropdown>
+    </div>
+  </div>  
+</div>
+
+<div class="container no-margin-left mt-10">
+    <div class="row">
+        <div class="col-12">
+            <button type="button " class="btn btn-primary" (click)="generateLeaderBoard()">Generate Leaderboard</button>&nbsp;
+            <button class="btn btn-primary" type="button" [disabled]="isValid === false" (click)="exportToCSV()">Download</button>
+        </div>
+    </div>
+</div>
+
+<div class="container no-margin-left mt-10"  *ngIf="leaderBoardData$ | async as leaderBoardData">
+  <table class="table table-striped" >
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">AgeGate</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Score</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of leaderBoardData.players">
+
+      <td>{{ player.name }}</td>
+      <td>{{ player.age_gate }}</td>
+      <td>{{ player.email }}</td>
+      <td>{{ player.type === 0  ? 'Web' : 'App' }}</td>
+      <td>{{ player.city }}</td>
+      <td>{{ player.state }}</td>
+      <td>{{ player.score }}</td>
+    </tr>
+    </tbody>
+  </table>
+  
+  <div class="d-flex justify-content-center p-2">
+      <ngb-pagination 
+      [collectionSize]="totalResults$ | async" 
+      [(page)]="currentPage" 
+      [pageSize]="pageSize$ | async" 
+      [boundaryLinks]="true"
+      [rotate]="true"
+      [maxSize]="5"
+      (pageChange)="onPageChange(currentPage)"
+      class="d-flex justify-content-center">
+    </ngb-pagination>      
+  </div>
+</div>

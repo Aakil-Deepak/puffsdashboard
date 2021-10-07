@@ -1,0 +1,214 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+  background-color: #f5f5f5;
+  height: 100%;
+}
+
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main-div {
+  padding-left: 0px;
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar-dark .navbar-brand {
+  color: #fff;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.px-md-4 {
+  padding-right: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.flex-md-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem !important;
+}
+
+.pt-3 {
+  padding-top: 1rem !important;
+}
+
+.mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #dee2e6 !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.h1,
+.h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.d-md-block {
+  display: block !important;
+}
+
+.bg-light {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #0d6efd;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+.active {
+  color: #2470dc !important;
+}
+
+.col-2 {
+  margin-top: 8px;
+  text-align: left !important;
+}
+
+.filter_row * {
+  text-align: left !important;
+}
+
+.filter_label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.select_app button,
+.d-inline-block {
+  width: 100%;
+}
+
+.radio_button {
+}
+
+.radio_div {
+  border: 1px solid #0d6efd;
+  height: 38px;
+  border-radius: 5px;
+  padding: 5px 15px;
+
+  text-align: center;
+}
+
+.location {
+  padding: 5px;
+  margin-top: 0px !important;
+}
+
+.loc_div .location,
+.loc_div .select_country {
+  display: inline-block;
+}
+
+.select_country button,
+.d-inline-block {
+  width: 100%;
+}
+
+.location {
+  text-align: right;
+}
+
+.loading-container {
+  overflow-x: auto;
+}
+
+.loading-overlay {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(250, 250, 250, 0.6);
+}
+
+.radio_space {
+  width: 10%;
+  display: inline-block;
+}
